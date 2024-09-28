@@ -174,7 +174,7 @@ const roomSchema: Schema = new Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
-    required: true, // 如果要測試，可以先設定為 false
+    required: false, // 如果要測試，可以先設定為 false
   },
   // 房間建立時間
   createdAt: {
