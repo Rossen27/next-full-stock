@@ -160,7 +160,7 @@ export const rooms = [
         "url": "http://res.cloudinary.com/udemy-courses/image/upload/v1693136789/bookit/demo/hmvqt42lzdjc197ynrtk.jpg"
       }
     ],
-    "category": "雙床房",
+    "category": "雙人房",
     "reviews": []
   },
   {
