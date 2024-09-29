@@ -12,7 +12,7 @@ export const allRooms = async (req: NextRequest) => {
   });
 };
 
-// 新增房間 POST => /api/rooms
+// 新增房間 POST => /api/admin/rooms
 export const newRoom = async (req: NextRequest) => {
   const body = await req.json();
   const room = await Room.create(body);
@@ -44,7 +44,7 @@ export const getRoomDetails = async (
   });
 };
 
-// 更新房間資訊 PUT => /api/rooms/:id
+// 更新房間資訊 PUT => /api/admin/rooms/:id
 export const updateRoom = async (
   req: NextRequest,
   { params }: { params: { id: string } }
@@ -70,5 +70,31 @@ export const updateRoom = async (
   return NextResponse.json({
     success: true,
     room,
+  });
+};
+
+// 刪除房間 DELETE => /api/admin/rooms/:id
+export const deleteRoom = async (
+  req: NextRequest,
+  { params }: { params: { id: string } }
+) => {
+  const room = await Room.findById(params.id);
+
+  if (!room) {
+    return NextResponse.json(
+      {
+        success: false,
+        message: '查無此房間',
+      },
+      { status: 404 }
+    );
+  }
+
+  // TODO - 之後要加入刪除房間的相片功能
+
+  await room.deleteOne();
+
+  return NextResponse.json({
+    success: true,
   });
 };
