@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Room from '../models/room'; // 引入 Room model
 
-// 取得所有房間
+// 取得所有房間 GET => /api/rooms
 export const allRooms = async (req: NextRequest) => {
   const resPerPage = 9; // 每頁顯示的房間數
   const rooms = await Room.find();
@@ -12,7 +12,7 @@ export const allRooms = async (req: NextRequest) => {
   });
 };
 
-// 新增房間
+// 新增房間 POST => /api/rooms
 export const newRoom = async (req: NextRequest) => {
   const body = await req.json();
   const room = await Room.create(body);
@@ -23,7 +23,7 @@ export const newRoom = async (req: NextRequest) => {
 };
 
 
-// 取得單一房間資訊
+// 取得單一房間資訊 GET => /api/rooms/:id
 export const getRoomDetails = async (
   req: NextRequest,
   { params }: { params: { id: string } }
@@ -38,6 +38,35 @@ export const getRoomDetails = async (
       { status: 404 }
     );
   }
+  return NextResponse.json({
+    success: true,
+    room,
+  });
+};
+
+// 更新房間資訊 PUT => /api/rooms/:id
+export const updateRoom = async (
+  req: NextRequest,
+  { params }: { params: { id: string } }
+) => {
+  let room = await Room.findById(params.id);
+  const body = await req.json();
+
+  if (!room) {
+    return NextResponse.json(
+      {
+        success: false,
+        message: '查無此房間',
+      },
+      { status: 404 }
+    );
+  }
+
+  room = await Room.findByIdAndUpdate(params
+    .id, body, {
+    new: true,
+  });
+
   return NextResponse.json({
     success: true,
     room,
