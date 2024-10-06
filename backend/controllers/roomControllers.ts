@@ -14,11 +14,19 @@ export const allRooms = catchAsyncErrors(async (req: NextRequest) => {
   searchParams.forEach((value, key) => {
     queryStr[key] = value;
   });
+
+  const roomsCount: number = await Room.countDocuments();
   const apiFilters = new APIFilters(Room, queryStr).search().filter();
-  const rooms: IRoom[] = await apiFilters.query;
+  let rooms: IRoom[] = await apiFilters.query;
+  const filteredRoomsCount: number = rooms.length;
+
+  apiFilters.pagination(resPerPage);
+  rooms = await apiFilters.query.clone();
 
   return NextResponse.json({
     success: true,
+    roomsCount,
+    filteredRoomsCount,
     resPerPage,
     rooms,
   });
