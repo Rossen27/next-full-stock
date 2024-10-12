@@ -5,15 +5,24 @@
  *
  * @param {Object} props - 傳遞給元件的參數物件
  * @param {React.ReactNode} props.children - 需要被包裹的子元件，可以是一個或多個元件。
- * 
+ *
  * @returns {JSX.Element} - 返回一個 JSX 元素，包含所有被包裹的子元件。
- * 
+ *
  * @example
  * // 使用 GlobalProvider 包裹應用程式中的其他元件
  * <GlobalProvider>
  *   <App />
  * </GlobalProvider>
  */
+import { NextUIProvider } from '@nextui-org/react';
+import { ThemeProvider as NextThemesProvider } from 'next-themes';
+
 export function GlobalProvider({ children }: { children: React.ReactNode }) {
-  return <>{children}</>; // 將子元件渲染並顯示在頁面上
+  return (
+    <NextUIProvider>
+      <NextThemesProvider attribute='class' defaultTheme="system">
+        {children}
+      </NextThemesProvider>
+    </NextUIProvider>
+  ); // 將子元件渲染並顯示在頁面上
 }
