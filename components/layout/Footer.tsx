@@ -6,7 +6,6 @@ export default function Footer() {
 
   return (
     <footer className="bg-[var(--background)] shadow-xl dark:shadow-white">
-      {' '}
       {/* 上方陰影效果 */}
       <div className='mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8'>
         <div className='sm:flex sm:items-center sm:justify-between'>

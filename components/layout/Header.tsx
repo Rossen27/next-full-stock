@@ -14,13 +14,17 @@ import {
 } from '@nextui-org/react';
 import { MdSearch } from 'react-icons/md';
 import { PiSnapchatLogoBold } from 'react-icons/pi';
+import { ThemeSwitcher } from '../ThemeSwitcher';
 
 export default function Header() {
   return (
-    <Navbar isBordered className='bg-[var(--background)] shadow-lg dark:shadow-white/20'>
+    <Navbar
+      isBordered
+      className='bg-[var(--background)] shadow-lg dark:shadow-white/20'
+    >
       <NavbarContent justify='start'>
-        <NavbarBrand className='mr-4'>
-          <PiSnapchatLogoBold />
+        <NavbarBrand className='mr-4 space-x-2'>
+          <PiSnapchatLogoBold className='w-8 h-8' />
           <p className='hidden sm:block font-bold text-inherit'>ACME</p>
         </NavbarBrand>
         <NavbarContent className='hidden sm:flex gap-3'>
@@ -42,10 +46,10 @@ export default function Header() {
         </NavbarContent>
       </NavbarContent>
 
-      <NavbarContent as='div' className='items-center' justify='end'>
+      <NavbarContent as='div' className='items-center' justify='center'>
         <Input
           classNames={{
-            base: 'max-w-full sm:max-w-[10rem] h-10',
+            base: 'max-w-full sm:max-w-[15rem] h-10',
             mainWrapper: 'h-full',
             input: 'text-small',
             inputWrapper:
@@ -56,15 +60,16 @@ export default function Header() {
           startContent={<MdSearch size={18} />}
           type='search'
         />
+        <ThemeSwitcher />
         <Dropdown placement='bottom-end'>
           <DropdownTrigger>
             <Avatar
               isBordered
               as='button'
-              className='transition-transform'
-              color='secondary'
-              name='Jason Hughes'
+              className='transition-transform flex-shrink-0'
               size='sm'
+              color='success'
+              name='Jason Hughes'
               src='https://i.pravatar.cc/150?u=a042581f4e29026704d'
             />
           </DropdownTrigger>
