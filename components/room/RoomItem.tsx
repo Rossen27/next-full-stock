@@ -1,9 +1,22 @@
 'use client';
 
+
+import { useState, useEffect } from 'react';
 import { Card, CardHeader, CardFooter, Image, Button } from '@nextui-org/react';
 import StarRatings from 'react-star-ratings';
+import { v4 as uuidv4 } from 'uuid';
 
-export default function RoomItem() {
+interface RoomItemProps {
+  id: string;
+}
+
+export default function RoomItem({ id }: RoomItemProps) {
+  const [gradientId, setGradientId] = useState<string>('');
+
+  useEffect(() => {
+    setGradientId(`starRating-${uuidv4()}`);
+  }, []);
+  
   return (
     <Card isFooterBlurred className='w-full h-[300px] shadow-lg'>
       <CardHeader className='absolute z-10 top-1 flex-col items-start'>
@@ -20,18 +33,22 @@ export default function RoomItem() {
       />
       <CardFooter className='absolute bg-white/30 bottom-0 border-t-1 border-zinc-100/50 z-10 justify-between'>
         <div>
-          <p className='text-black text-tiny'>TWD $ 1,200 x 1 晚</p>
-          <div className='flex items-center space-x-2'>
-            <StarRatings
-              rating={4} // 評分
-              starRatedColor='yellow' // 評分過的星星顏色
-              starHoverColor='yellow' // 滑鼠移入時的星星顏色
-              numberOfStars={5}
-              name='rating'
-              starDimension='18px' // 星星大小
-              starSpacing='1px' // 星星間距
-              changeRating={() => {}}
-            /><p className='text-gray-800 text-tiny'>( 50 則評論 )</p>
+          <p className='text-black text-tiny md:text-tiny whitespace-nowrap'>TWD $ 1,200 x 1 晚</p>
+          <div className='flex flex-row items-center space-x-2'>
+            {gradientId && ( // 確保 ID 已經在客戶端生成後再渲染
+              <StarRatings
+                id={gradientId}
+                rating={4}
+                starRatedColor='yellow'
+                starHoverColor='yellow'
+                numberOfStars={5}
+                name='rating'
+                starDimension='18px'
+                starSpacing='1px'
+                changeRating={() => {}}
+              />
+            )}
+            <p className='text-gray-800 text-tiny'>( 50 則評論 )</p>
           </div>
         </div>
         <Button
