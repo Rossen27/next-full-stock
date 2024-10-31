@@ -16,11 +16,13 @@
  */
 import { NextUIProvider } from '@nextui-org/react';
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
+import { Toaster } from 'react-hot-toast';
 
 export function GlobalProvider({ children }: { children: React.ReactNode }) {
   return (
     <NextUIProvider>
-      <NextThemesProvider attribute='class' defaultTheme="system">
+      <NextThemesProvider attribute='class' defaultTheme='system'>
+        <Toaster position='top-right' reverseOrder={false} />
         {children}
       </NextThemesProvider>
     </NextUIProvider>
