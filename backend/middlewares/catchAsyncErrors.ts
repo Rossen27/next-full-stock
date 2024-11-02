@@ -26,6 +26,7 @@ export const catchAsyncErrors =
       // 嘗試執行傳入的處理函數
       return await handler(req, params);
     } catch (error: any) {
+      const statusCode = error.statusCode || 500;
       // 處理 CastError 錯誤，通常表示請求的資料格式無效
       if (error?.name === 'CastError') {
         error.statusCode = 400; // 設置狀態碼為 400 表示請求錯誤
@@ -43,9 +44,10 @@ export const catchAsyncErrors =
       // 捕捉到錯誤時返回錯誤訊息
       return NextResponse.json(
         {
+          statusCode,
           message: error.message, // 傳送錯誤訊息
         },
-        { status: error.statusCode || 500 } // 如果沒有狀態碼，預設為 500 伺服器錯誤
+        { status: error.statusCode } // 如果沒有狀態碼，預設為 500 伺服器錯誤
       );
     }
   };

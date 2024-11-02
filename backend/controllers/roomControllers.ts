@@ -6,7 +6,7 @@ import APIFilters from '../utils/apiFilters';
 
 // 取得所有房間 GET => /api/rooms
 export const allRooms = catchAsyncErrors(async (req: NextRequest) => {
-  const resPerPage = 9; // 每頁顯示的房間數
+  const resPerPage = 12; // 每頁顯示的房間數
   // const rooms = await Room.find();
 
   const { searchParams } = new URL(req.url);
@@ -15,7 +15,7 @@ export const allRooms = catchAsyncErrors(async (req: NextRequest) => {
     queryStr[key] = value;
   });
 
-  const roomsCount: number = await Room.countDocuments();
+  // const roomsCount: number = await Room.countDocuments();
   const apiFilters = new APIFilters(Room, queryStr).search().filter();
   let rooms: IRoom[] = await apiFilters.query;
   const filteredRoomsCount: number = rooms.length;
@@ -25,7 +25,7 @@ export const allRooms = catchAsyncErrors(async (req: NextRequest) => {
 
   return NextResponse.json({
     success: true,
-    roomsCount,
+    // roomsCount,
     filteredRoomsCount,
     resPerPage,
     rooms,
