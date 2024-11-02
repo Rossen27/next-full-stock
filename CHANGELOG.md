@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7](https://github.com/Rossen27/next-full-stock/compare/v0.1.6...v0.1.7) (2024-11-02)
+
+
+### Features
+
+* 將前端商品小卡串連將前端商品小卡串連後端API ([3f87e59](https://github.com/Rossen27/next-full-stock/commit/3f87e5964379cd6a34c215d53c36c7bcda10abbd))
+
 ### [0.1.6](https://github.com/Rossen27/next-full-stock/compare/v0.1.5...v0.1.6) (2024-10-31)
 
 
