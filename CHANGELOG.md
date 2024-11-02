@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.8](https://github.com/Rossen27/next-full-stock/compare/v0.1.7...v0.1.8) (2024-11-02)
+
+
+### Features
+
+* 新增房間詳細資料組件 ([9470c3b](https://github.com/Rossen27/next-full-stock/commit/9470c3ba339a550576258aef11e892724e4d8033))
+
 ### [0.1.7](https://github.com/Rossen27/next-full-stock/compare/v0.1.6...v0.1.7) (2024-11-02)
 
 
