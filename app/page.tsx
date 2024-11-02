@@ -1,6 +1,10 @@
 import Home from '@/components/Home';
 import Error from './error';
 
+export const metadata ={
+  title: '快速搜尋'
+}
+
 const getRooms = async () => {
   const res = await fetch(`${process.env.API_URL}/api/rooms`);
   return res.json();

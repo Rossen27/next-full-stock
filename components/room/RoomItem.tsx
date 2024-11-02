@@ -11,16 +11,31 @@ import {
 import StarRatings from 'react-star-ratings';
 import { IRoom } from '@/backend/models/room';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 interface Props {
   room: IRoom;
 }
 
 export default function RoomItem({ room }: Props) {
+  const [uniqueId, setUniqueId] = useState('');
+
+  useEffect(() => {
+    if (room?._id) {
+      setUniqueId(`starGrad-${room._id}`);
+    }
+  }, [room?._id]);
+
   return (
     <Card isFooterBlurred className='w-full h-full shadow-lg'>
       <CardHeader className='absolute z-10 top-1 flex-col items-start'>
-        <Chip radius='full' size='sm' variant='shadow' color='danger' className='animate-bounce'>
+        <Chip
+          radius='full'
+          size='sm'
+          variant='shadow'
+          color='danger'
+          className='animate-bounce'
+        >
           熱門
         </Chip>
         <h3 className='mt-2 font-medium text-lg hover:text-purple-600 text-black bg-white/60 px-3 rounded-full'>
@@ -44,7 +59,7 @@ export default function RoomItem({ room }: Props) {
           </p>
           <div className='flex flex-row items-center space-x-2'>
             <StarRatings
-              id={room?._id}
+              id={uniqueId}
               rating={room?.ratings}
               starRatedColor='yellow'
               starHoverColor='yellow'

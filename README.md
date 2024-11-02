@@ -71,7 +71,7 @@ bun dev
    ```bash
    npx git-cz  # 使用 Commitizen 進行規範化提交
    npm run release  # 使用 Standard Version 進行版本號升級和變更記錄生成
-   git push --follow-tags origin main  # 推送變更和標籤
+   git push --follow-tags origin master  # 推送變更和標籤
    ```
 
 ## 依賴套件說明

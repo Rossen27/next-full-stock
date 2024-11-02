@@ -17,7 +17,7 @@ export default function HomePage({ data }: Props) {
   const { rooms, resPerPage, filteredRoomsCount } = data;
 
   return (
-    <div className='min-h-screen px-24 py-6'>
+    <div className='px-24 py-6'>
       <header className='flex flex-col '>
         <h1 className='text-5xl'>搜尋結果</h1>
         <div className='flex items-center mt-2 hover:text-blue-500'>
