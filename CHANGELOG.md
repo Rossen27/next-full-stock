@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.9](https://github.com/Rossen27/next-full-stock/compare/v0.1.8...v0.1.9) (2024-11-10)
+
+
+### Features
+
+* 新增輪播、房間特色 ([3814227](https://github.com/Rossen27/next-full-stock/commit/38142270d72bfef34b981d80c318b80cef3f67a4))
+
 ### [0.1.8](https://github.com/Rossen27/next-full-stock/compare/v0.1.7...v0.1.8) (2024-11-02)
 
 
