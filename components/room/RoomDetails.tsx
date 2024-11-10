@@ -25,7 +25,7 @@ export default function RoomDetails({ data }: Props) {
   }, [room._id]);
 
   return (
-    <div className='p-5'>
+    <div className='mx-20 p-5'>
       <h2 className='mt-10 text-2xl font-bold'>{room.name}</h2>
       <p className='text-gray-700'>{room.address}</p>
 

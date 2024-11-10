@@ -3,6 +3,9 @@
 import { IRoom } from '@/backend/models/room';
 import RoomItem from './room/RoomItem';
 import { MdOutlineArrowBack } from 'react-icons/md';
+import CustomPagination from './layout/CustomPagination';
+import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 
 interface Props {
   data: {
@@ -14,12 +17,17 @@ interface Props {
 }
 
 export default function HomePage({ data }: Props) {
+  const searchParams = useSearchParams();
+  const location = searchParams.get('location');
   const { rooms, resPerPage, filteredRoomsCount } = data;
 
   return (
     <div className='px-24 py-6'>
       <header className='flex flex-col '>
         <h1 className='text-5xl'>搜尋結果</h1>
+        <p className='text-gray-500'>
+          {location ? `${rooms?.length} 間房間在 ${location}` : '所有房間'}
+        </p>
         <div className='flex items-center mt-2 hover:text-blue-500'>
           <MdOutlineArrowBack />
           <span>回到上一頁</span>
@@ -31,9 +39,15 @@ export default function HomePage({ data }: Props) {
             <strong className='font-bold'>No Rooms.</strong>
           </div>
         ) : (
-          rooms?.map((room) => <RoomItem key={room._id as number} room={room} />)
+          rooms?.map((room) => (
+            <RoomItem key={room._id as number} room={room} />
+          ))
         )}
       </main>
+      <CustomPagination
+        resPerPage={resPerPage}
+        filteredRoomsCount={filteredRoomsCount}
+      />
     </div>
   );
 }
