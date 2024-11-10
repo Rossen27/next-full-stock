@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.10](https://github.com/Rossen27/next-full-stock/compare/v0.1.9...v0.1.10) (2024-11-10)
+
+
+### Features
+
+* 建立分頁 ([b9a4acf](https://github.com/Rossen27/next-full-stock/commit/b9a4acf85c288d8e4ba73fa105c830e0fbadbbc5))
+
 ### [0.1.9](https://github.com/Rossen27/next-full-stock/compare/v0.1.8...v0.1.9) (2024-11-10)
 
 
