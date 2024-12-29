@@ -13,7 +13,9 @@ const nextConfig = {
   env: {
     API_URL: 'http://localhost:3000',
     DB_LOCAL_URI: 'mongodb://127.0.0.1:27017/NextFullStock', // 使用127.0.0.1避免localhost的問題
-    DB_URI: 'mongodb+srv://rossen:Rossen791127@cluster0.sbbdfz9.mongodb.net/NextFullStock?retryWrites=true&w=majority&appName=Cluster0'
+    DB_URI: 'mongodb+srv://rossen:Rossen791127@cluster0.sbbdfz9.mongodb.net/NextFullStock?retryWrites=true&w=majority&appName=Cluster0',
+    HOST: process.env.HOST || 'localhost',
+    PORT: process.env.PORT || 3000,
   },
   images:{
     domains: ['res.cloudinary.com']
